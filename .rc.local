@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /app/broadcast-system && /usr/local/bin/docker-compose -f /app/broadcast-system/docker-compose.yml up -d
+
+exit 0
