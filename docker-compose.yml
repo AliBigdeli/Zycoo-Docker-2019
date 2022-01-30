@@ -1,0 +1,269 @@
+version: '3'
+services:
+  zycoo_mysql:
+    image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_mysql:${ZYCOO_MYSQL_TAG}
+    container_name: zycoo_mysql
+    networks:
+         extnetwork:
+            ipv4_address: 10.103.0.2
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - ${MYSQL_PORT}
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - TZ=${TZ}
+    restart: always
+  zycoo_init:
+    image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_init:${ZYCOO_INIT_TAG}
+    container_name: zycoo_init
+    networks:
+         extnetwork:
+            ipv4_address: 10.103.0.3
+    volumes:
+      - ./data/zycoo_init:/init
+    depends_on:
+      - zycoo_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+      - MYSQL=zycoo_mysql
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_USER=${MYSQL_USER}
+      - ASTERISK=zycoo_asterisk
+      - ASTERISK_AMI_PORT=${ASTERISK_AMI_PORT}
+      - REDIS=zycoo_redis
+      - ICECAST_SERVER=zycoo_icecast_server
+      - ICECAST_SERVER_PORT=${ICECAST_SERVER_PORT}
+      - ICECAST_CLIENT=zycoo_icecast_client
+      - BROADCAST_GATEWAY=zycoo_broadcast_gateway
+      - BROADCAST_GATEWAY_PORT=${BROADCAST_GATEWAY_PORT}
+      - TZ=${TZ}
+    restart: always
+  zycoo_asterisk:
+    network_mode: host
+    image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_asterisk:${ZYCOO_ASTERISK_TAG}
+    container_name: zycoo_asterisk
+    privileged: true
+    volumes:
+      - ./data/music/asterisk:/var/spool/asterisk
+      - ./data/music:/music
+      - ./data/zycoo_init:/init
+    depends_on:
+      - zycoo_init
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+      - MYSQL=10.103.0.2
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_USER=${MYSQL_USER}
+      - ASTERISK=zycoo_asterisk
+      - ASTERISK_AMI_PORT=${ASTERISK_AMI_PORT}
+      - REDIS=10.103.0.7
+      - ICECAST_SERVER=zycoo_icecast_server
+      - ICECAST_SERVER_PORT=${ICECAST_SERVER_PORT}
+      - ICECAST_CLIENT=zycoo_icecast_client
+      - BROADCAST_GATEWAY=10.103.0.8
+      - BROADCAST_GATEWAY_PORT=${BROADCAST_GATEWAY_PORT}
+      - AGI_SERVER_PORT=${AGI_SERVER_PORT}
+      - TTS_SERVER_PORT=${TTS_SERVER_PORT}
+      - TZ=${TZ}
+    restart: always
+  zycoo_icecast_server:
+    image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_icecast_server:${ZYCOO_ICECAST_SERVER_TAG}
+    container_name: zycoo_icecast_server
+    networks:
+         extnetwork:
+            ipv4_address: 10.103.0.4
+    ports:
+      - "${ICECAST_SERVER_PORT}:8001/tcp"
+    volumes:
+      - ./data/sql:/sql
+      - ./data/zycoo_init/sql:/init/sql
+      - ./data/music:/music
+    depends_on:
+      - zycoo_init
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+      - MYSQL=zycoo_mysql
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_USER=${MYSQL_USER}
+      - ASTERISK=zycoo_asterisk
+      - ASTERISK_AMI_PORT=${ASTERISK_AMI_PORT}
+      - REDIS=zycoo_redis
+      - ICECAST_SERVER=zycoo_icecast_server
+      - ICECAST_SERVER_PORT=${ICECAST_SERVER_PORT}
+      - ICECAST_CLIENT=zycoo_icecast_client
+      - BROADCAST_GATEWAY=zycoo_broadcast_gateway
+      - BROADCAST_GATEWAY_PORT=${BROADCAST_GATEWAY_PORT}
+      - TZ=${TZ}
+    restart: always
+  zycoo_icecast_client:
+    image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_icecast_client:${ZYCOO_ICECAST_CLIENT_TAG}
+    container_name: zycoo_icecast_client
+    networks:
+         extnetwork:
+            ipv4_address: 10.103.0.5
+    volumes:
+      - ./data/music:/music
+      - ./data/zycoo_init/sql:/init/sql
+    depends_on:
+      - zycoo_init
+      - zycoo_redis
+      - zycoo_icecast_server
+    environment:
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+      - MYSQL=zycoo_mysql
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_USER=${MYSQL_USER}
+      - ASTERISK=zycoo_asterisk
+      - ASTERISK_AMI_PORT=${ASTERISK_AMI_PORT}
+      - REDIS=zycoo_redis
+      - ICECAST_SERVER=zycoo_icecast_server
+      - ICECAST_SERVER_PORT=${ICECAST_SERVER_PORT}
+      - ICECAST_CLIENT=zycoo_icecast_client
+      - BROADCAST_GATEWAY=zycoo_broadcast_gateway
+      - BROADCAST_GATEWAY_PORT=${BROADCAST_GATEWAY_PORT}
+      - TZ=${TZ}
+    restart: always
+  zycoo_easydarwin:
+    network_mode: host
+    image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_easydarwin:${ZYCOO_EASYDARWIN_TAG}
+    container_name: zycoo_easydarwin
+    volumes:
+      - ./data/easydarwin/logs:/app/easydarwin/logs
+      - ./data/easydarwin/downloads:/app/easydarwin/downloads
+      - ./data/music:/music
+      - ./data/zycoo_init:/init
+    depends_on:
+      - zycoo_init
+    environment:
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+      - MYSQL=zycoo_mysql
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_USER=${MYSQL_USER}
+      - ASTERISK=zycoo_asterisk
+      - ASTERISK_AMI_PORT=${ASTERISK_AMI_PORT}
+      - REDIS=zycoo_redis
+      - ICECAST_SERVER=zycoo_icecast_server
+      - ICECAST_SERVER_PORT=${ICECAST_SERVER_PORT}
+      - ICECAST_CLIENT=zycoo_icecast_client
+      - BROADCAST_GATEWAY=zycoo_broadcast_gateway
+      - BROADCAST_GATEWAY_PORT=${BROADCAST_GATEWAY_PORT}
+      - TZ=${TZ}
+    restart: always
+  zycoo_nginx:
+    image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_nginx:${ZYCOO_NGINX_TAG}
+    container_name: zycoo_nginx
+    networks:
+         extnetwork:
+            ipv4_address: 10.103.0.6
+    ports:
+      - "${NGINX_HTTP_PORT}:80"
+      - "${NGINX_HTTPS_PORT}:443"
+    volumes:
+      - ./data/nginx/etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./data/nginx/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./data/zycoo_init/cert/server.crt:/etc/nginx/cert/server.crt
+      - ./data/zycoo_init/cert/server.key:/etc/nginx/cert/server.key
+    depends_on:
+      - zycoo_broadcast_gateway
+    environment:
+      - BROADCAST_GATEWAY=zycoo_broadcast_gateway
+      - EASYDARWIN=10.103.0.1
+      - TZ=${TZ}
+    restart: always
+  zycoo_redis:
+    image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_redis:${ZYCOO_REDIS_TAG}
+    container_name: zycoo_redis
+    networks:
+         extnetwork:
+            ipv4_address: 10.103.0.7
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    ports:
+      - ${REDIS_PORT}
+    volumes:
+      - ./data/redis:/data
+    restart: always
+  zycoo_vlc:
+    network_mode: host
+    image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_vlc:${ZYCOO_VLC_TAG}
+    container_name: zycoo_vlc
+    privileged: true
+    volumes:
+      - ./data/music:/music
+    restart: always
+  zycoo_broadcast_gateway:
+    image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_broadcast_gateway:${ZYCOO_BROADCAST_GATEWAY_TAG}
+    container_name: zycoo_broadcast_gateway
+    networks:
+         extnetwork:
+            ipv4_address: 10.103.0.8
+    ports:
+      - "${BROADCAST_GATEWAY_PORT}:8000"
+      - "${BROADCAST_GATEWAY_MQTT_PORT}:1883"
+      - "${AGI_SERVER_PORT}:8004"
+    volumes:
+      - ./data/music:/music
+      - ./data/zycoo_init:/init
+    depends_on:
+      - zycoo_init
+      - zycoo_icecast_server
+      - zycoo_redis
+      - zycoo_asterisk
+      - zycoo_icecast_client
+    environment:
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+      - MYSQL=zycoo_mysql
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_USER=${MYSQL_USER}
+      - ASTERISK=10.103.0.1
+      - ASTERISK_AMI_PORT=${ASTERISK_AMI_PORT}
+      - REDIS=zycoo_redis
+      - ICECAST_SERVER=zycoo_icecast_server
+      - ICECAST_SERVER_PORT=${ICECAST_SERVER_PORT}
+      - ICECAST_CLIENT=zycoo_icecast_client
+      - BROADCAST_GATEWAY=zycoo_broadcast_gateway
+      - BROADCAST_GATEWAY_PORT=${BROADCAST_GATEWAY_PORT}
+      - EASYDARWIN=10.103.0.1
+      - EASYDARWIN_API_PORT=${EASYDARWIN_UI_PORT}
+      - AGI_SERVER_PORT=${AGI_SERVER_PORT}
+      - TTS_SERVER_PORT=${TTS_SERVER_PORT}
+      - TZ=${TZ}
+    restart: always
+  docker-bind:
+     image: ${REGISTRY_HOST}:${REGISTRY_PORT}/zycoo_docker:dind
+     container_name: zycoo_docker
+     networks:
+         extnetwork:
+            ipv4_address: 10.103.0.9
+     privileged: true
+networks:
+   extnetwork:
+      ipam:
+         config:
+         - subnet: 10.103.0.0/16

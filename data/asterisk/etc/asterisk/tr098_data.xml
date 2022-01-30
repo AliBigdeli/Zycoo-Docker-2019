@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<InternetGatewayDevice>
+    <Event>
+        <EventCode><Value>2 PERIODIC</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <Event>
+        <EventCode><Value>1 BOOT</Value></EventCode>
+        <CommandKey><Value></Value></CommandKey>
+    </Event>
+    <DeviceSummary><Value>VOIP</Value></DeviceSummary>
+    <LANDeviceNumberOfEntries><Value>1</Value></LANDeviceNumberOfEntries>
+    <WANDeviceNumberOfEntries><Value>1</Value></WANDeviceNumberOfEntries>
+    <DeviceInfo>
+        <Manufacturer><Value>Zycoo-U20p</Value></Manufacturer>
+        <ManufacturerOUI><Value>079BD</Value></ManufacturerOUI>
+        <ModelName><Value>CooVox-A20</Value></ModelName>
+        <ProductClass><Value>IP-PBX</Value></ProductClass>
+        <SerialNumber><Value>9876543078</Value></SerialNumber>
+        <HardwareVersion><Value>1.1</Value></HardwareVersion>
+        <UpTime><Value>516835</Value></UpTime>
+    </DeviceInfo>
+    <ManagementServer>
+        <URL><Value>http://192.168.1.145/acs</Value></URL>
+        <Timeout><Value>2000</Value></Timeout>
+        <PeriodicInformEnable><Value>1</Value></PeriodicInformEnable>
+        <PeriodicInformInterval><Value>1800</Value></PeriodicInformInterval>
+        <ConnectionRequestURL><Value>http://192.168.1.68:7547</Value></ConnectionRequestURL>
+        <ConnectionRequestInterval><Value>10</Value></ConnectionRequestInterval>
+        <Authentication><Value>NONE</Value></Authentication>
+    </ManagementServer>
+    <Layer3Forwarding>
+        <ForwardNumberOfEntries><Value>2</Value></ForwardNumberOfEntries>
+        <Forwarding>
+            <GatewayIPAddress><Value>192.168.1.253</Value></GatewayIPAddress>
+            <Interface><Value>eth0</Value></Interface>
+        </Forwarding>
+        <Forwarding>
+            <DestIPAddress><Value>169.254.0.0</Value></DestIPAddress>
+        </Forwarding>
+    </Layer3Forwarding>
+    <LANDevice>
+        <LANEthernetInterfaceNumberOfEntries><Value>1</Value></LANEthernetInterfaceNumberOfEntries>
+        <LANHostConfigManagement>
+            <IPInterfaceNumberOfEntries><Value>1</Value></IPInterfaceNumberOfEntries>
+            <IPInterface>
+            </IPInterface>
+        </LANHostConfigManagement>
+        <Hosts>
+            <HostNumberOfEntries><Value>1</Value></HostNumberOfEntries>
+            <Host>
+                <IPAddress><Value>192.168.1.68</Value></IPAddress>
+                <MACAddress><Value>00-12-45-78-44-11</Value></MACAddress>
+                <HostName><Value>localhost.localdomain</Value></HostName>
+            </Host>
+        </Hosts>
+        <LANEthernetInterfaceConfig>
+            <Status><Value>promisc</Value></Status>
+            <MACAddress><Value>00-12-45-78-44-11</Value></MACAddress>
+            <MaxBitRate><Value>1500</Value></MaxBitRate>
+            <DuplexMode><Value>half</Value></DuplexMode>
+            <Stats>
+                <BytesSent><Value>116793414</Value></BytesSent>
+                <BytesReceived><Value>1377282774</Value></BytesReceived>
+                <PacketsSent><Value>413284</Value></PacketsSent>
+                <PacketsReceived><Value>17105229</Value></PacketsReceived>
+            </Stats>
+        </LANEthernetInterfaceConfig>
+    </LANDevice>
+    <WANDevice>
+        <WANConnectionNumberOfEntries><Value>1</Value></WANConnectionNumberOfEntries>
+        <WANCommonInterfaceConfig>
+        </WANCommonInterfaceConfig>
+        <WANConnectionDevice>
+            <WANIPConnectionNumberOfEntries><Value>1</Value></WANIPConnectionNumberOfEntries>
+            <WANPPPConnectionNumberOfEntries><Value>1</Value></WANPPPConnectionNumberOfEntries>
+            <WANIPConnection>
+                <PortMappingNumberOfEntries><Value>1</Value></PortMappingNumberOfEntries>
+                <PortMapping>
+                </PortMapping>
+                <Stats>
+                </Stats>
+            </WANIPConnection>
+            <WANPPPConnection>
+                <PortMappingNumberOfEntries><Value>1</Value></PortMappingNumberOfEntries>
+                <PortMapping>
+                </PortMapping>
+                <Stats>
+                </Stats>
+            </WANPPPConnection>
+        </WANConnectionDevice>
+    </WANDevice>
+    <Time>
+        <NTPServer1><Value>time.nist.gov</Value></NTPServer1>
+        <LocalTimeZone><Value>CST-8</Value></LocalTimeZone>
+        <LocalTimeZoneName><Value>Asia/Chongqing</Value></LocalTimeZoneName>
+    </Time>
+</InternetGatewayDevice>

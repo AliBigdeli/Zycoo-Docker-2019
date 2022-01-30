@@ -1,0 +1,88 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 4097 (0x1001)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=CN, ST=SiChuan, L=ChengDu, O=Zycoo Co.,Ltd., OU=CooCenter, CN=cc.zycoo.com/emailAddress=cc-support@zycoo.com
+        Validity
+            Not Before: Feb 20 10:36:25 2019 GMT
+            Not After : Feb 17 10:36:25 2029 GMT
+        Subject: C=CN, ST=SiChuan, O=Zycoo Co.,Ltd., OU=CooCenter, CN=cc.zycoo.com/emailAddress=cc-support@zycoo.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:b6:da:4c:c8:cd:1e:75:bc:b5:82:fc:93:e9:9f:
+                    6e:69:cb:fa:58:73:da:fb:cb:67:c5:40:4e:69:26:
+                    d0:a8:47:ba:70:33:aa:e3:c1:3a:5f:3a:c9:ba:75:
+                    5e:7e:3d:e8:64:80:e0:9c:5f:02:11:e9:14:d3:5f:
+                    9f:c7:96:c1:0f:ad:0a:94:26:69:97:5e:c4:f9:f6:
+                    b5:28:52:91:bc:5e:5d:6b:72:e8:eb:2f:85:2a:80:
+                    a9:ae:89:24:23:a6:61:3b:21:fe:49:00:e3:e1:de:
+                    c3:ee:7a:cd:2f:0b:d6:c0:f5:19:a6:16:1d:b9:ec:
+                    4b:34:06:a8:b1:64:0a:48:8f:ec:e2:86:8d:74:4b:
+                    ec:dc:03:d4:e9:a5:69:bf:9d:25:3c:2e:88:fe:ed:
+                    8e:78:63:6c:54:4f:4e:b8:b2:be:d9:39:e1:a3:c7:
+                    9c:fe:ff:26:c8:67:c2:2e:28:58:00:bb:a4:c9:1d:
+                    7e:ec:f3:d7:b1:96:fa:42:d4:ca:ab:da:2b:22:b1:
+                    e1:d2:5a:af:45:13:ae:0f:1f:fc:20:bb:fe:ae:47:
+                    fa:ba:30:d4:0b:9d:ee:e1:85:f9:5a:b1:46:0f:4a:
+                    5b:5e:3c:e4:75:8c:0d:39:d2:1f:86:d2:a3:a9:c5:
+                    7b:a0:16:3f:d6:67:bd:d3:18:20:ac:46:10:dc:5e:
+                    39:01
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                F4:40:AF:D1:C3:01:94:AA:B1:5F:BE:ED:EE:F6:67:70:19:9C:FE:41
+            X509v3 Authority Key Identifier: 
+                DirName:/C=CN/ST=SiChuan/L=ChengDu/O=Zycoo Co.,Ltd./OU=CooCenter/CN=cc.zycoo.com/emailAddress=cc-support@zycoo.com
+                serial:A0:F5:CF:AC:E3:8E:FC:FA
+
+    Signature Algorithm: sha256WithRSAEncryption
+         11:bc:b8:50:5b:5c:ec:e2:83:9e:ed:e1:7e:f8:d2:8f:a6:15:
+         37:fe:da:e7:d8:8c:d4:45:5a:09:73:d8:d9:02:5e:96:94:c8:
+         44:ac:29:bf:7b:3b:4c:e1:60:b2:86:31:c7:1e:d4:fe:6e:92:
+         ab:e7:a1:9b:2d:57:6a:28:d2:78:0e:3f:2f:21:1b:b1:2a:26:
+         8c:7a:e8:b3:f7:6e:d8:24:19:29:d5:80:16:2b:f2:d3:59:af:
+         82:75:bc:97:2d:78:71:d3:bf:6c:f8:3f:c6:9a:b0:7a:5a:94:
+         0b:82:18:ac:c1:26:88:6e:3f:6b:5e:94:c2:70:0b:dd:f7:01:
+         26:3d:9a:78:da:e4:c0:a2:1b:40:19:bd:07:4d:ed:c5:5c:20:
+         41:35:f7:cc:8f:2a:04:e0:a7:36:4b:86:0c:74:5e:9f:de:de:
+         b3:93:76:8b:e9:49:75:e6:bf:26:8c:a6:73:b8:2d:84:01:d1:
+         bd:97:41:20:56:3c:21:54:c7:5f:ad:05:49:58:07:12:d6:38:
+         6a:f2:be:e1:9c:bd:94:02:da:72:ab:d7:9f:c2:a6:b9:05:7e:
+         00:a8:b0:bb:86:3b:ea:63:43:c2:ef:f0:8d:96:eb:81:0c:05:
+         81:74:69:57:06:0a:29:9f:9b:88:e4:30:21:9a:f5:91:d4:c0:
+         b1:a2:17:b1
+-----BEGIN CERTIFICATE-----
+MIIEujCCA6KgAwIBAgICEAEwDQYJKoZIhvcNAQELBQAwgZoxCzAJBgNVBAYTAkNO
+MRAwDgYDVQQIDAdTaUNodWFuMRAwDgYDVQQHDAdDaGVuZ0R1MRcwFQYDVQQKDA5a
+eWNvbyBDby4sTHRkLjESMBAGA1UECwwJQ29vQ2VudGVyMRUwEwYDVQQDDAxjYy56
+eWNvby5jb20xIzAhBgkqhkiG9w0BCQEWFGNjLXN1cHBvcnRAenljb28uY29tMB4X
+DTE5MDIyMDEwMzYyNVoXDTI5MDIxNzEwMzYyNVowgYgxCzAJBgNVBAYTAkNOMRAw
+DgYDVQQIDAdTaUNodWFuMRcwFQYDVQQKDA5aeWNvbyBDby4sTHRkLjESMBAGA1UE
+CwwJQ29vQ2VudGVyMRUwEwYDVQQDDAxjYy56eWNvby5jb20xIzAhBgkqhkiG9w0B
+CQEWFGNjLXN1cHBvcnRAenljb28uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
+MIIBCgKCAQEAttpMyM0edby1gvyT6Z9uacv6WHPa+8tnxUBOaSbQqEe6cDOq48E6
+XzrJunVefj3oZIDgnF8CEekU01+fx5bBD60KlCZpl17E+fa1KFKRvF5da3Lo6y+F
+KoCprokkI6ZhOyH+SQDj4d7D7nrNLwvWwPUZphYduexLNAaosWQKSI/s4oaNdEvs
+3APU6aVpv50lPC6I/u2OeGNsVE9OuLK+2Tnho8ec/v8myGfCLihYALukyR1+7PPX
+sZb6QtTKq9orIrHh0lqvRROuDx/8ILv+rkf6ujDUC53u4YX5WrFGD0pbXjzkdYwN
+OdIfhtKjqcV7oBY/1me90xggrEYQ3F45AQIDAQABo4IBGDCCARQwCQYDVR0TBAIw
+ADAsBglghkgBhvhCAQ0EHxYdT3BlblNTTCBHZW5lcmF0ZWQgQ2VydGlmaWNhdGUw
+HQYDVR0OBBYEFPRAr9HDAZSqsV++7e72Z3AZnP5BMIG5BgNVHSMEgbEwga6hgaCk
+gZ0wgZoxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdTaUNodWFuMRAwDgYDVQQHDAdD
+aGVuZ0R1MRcwFQYDVQQKDA5aeWNvbyBDby4sTHRkLjESMBAGA1UECwwJQ29vQ2Vu
+dGVyMRUwEwYDVQQDDAxjYy56eWNvby5jb20xIzAhBgkqhkiG9w0BCQEWFGNjLXN1
+cHBvcnRAenljb28uY29tggkAoPXPrOOO/PowDQYJKoZIhvcNAQELBQADggEBABG8
+uFBbXOzig57t4X740o+mFTf+2ufYjNRFWglz2NkCXpaUyESsKb97O0zhYLKGMcce
+1P5ukqvnoZstV2oo0ngOPy8hG7EqJox66LP3btgkGSnVgBYr8tNZr4J1vJcteHHT
+v2z4P8aasHpalAuCGKzBJohuP2telMJwC933ASY9mnja5MCiG0AZvQdN7cVcIEE1
+98yPKgTgpzZLhgx0Xp/e3rOTdovpSXXmvyaMpnO4LYQB0b2XQSBWPCFUx1+tBUlY
+BxLWOGryvuGcvZQC2nKr15/CprkFfgCosLuGO+pjQ8Lv8I2W64EMBYF0aVcGCimf
+m4jkMCGa9ZHUwLGiF7E=
+-----END CERTIFICATE-----

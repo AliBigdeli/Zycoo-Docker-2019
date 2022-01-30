@@ -1,0 +1,35 @@
+;;;;;	MTP3 timers as specified in ITU-T Q.704 or ANSI T1.111-2001
+
+mtp3_timer.t1 = 500
+mtp3_timer.t2 = 700
+mtp3_timer.t3 = 500
+mtp3_timer.t4 = 500
+mtp3_timer.t5 = 500
+mtp3_timer.t6 = 500
+mtp3_timer.t7 = 1000
+
+mtp3_timer.t10 = 60000
+
+mtp3_timer.t12 = 800
+mtp3_timer.t13 = 800
+mtp3_timer.t14 = 2000
+
+;;;;;	ISUP timers as specified in ITU-T Q.764 or ANSI T1.113-2000
+
+isup_timer.t1 = 15000
+isup_timer.t6 = 30000
+isup_timer.t7 = 20000
+isup_timer.t8 = 10000
+
+isup_timer.t12 = 15000
+isup_timer.t14 = 15000
+isup_timer.t16 = 15000
+isup_timer.t18 = 15000
+isup_timer.t20 = 15000
+isup_timer.t22 = 15000
+isup_timer.t27 = 240000
+isup_timer.t33 = 12000
+
+
+
+
